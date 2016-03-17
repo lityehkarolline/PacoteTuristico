@@ -2,37 +2,37 @@ package servico;
 
 import java.util.List;
 
-import dao.ClienteDao;
+import dao.ContratoDao;
 import dao.DaoFactory;
 import dao.impl.EM;
-import dominio.Cliente;
+import dominio.Contrato;
 
-public class ClienteServico {
+public class ContratoServico {
 	
-private ClienteDao dao;
+	private ContratoDao dao;
 	
-	public ClienteServico() {
-		dao = DaoFactory.criarClienteDao();
+	public ContratoServico() {
+		dao = DaoFactory.criarContratoDao();
 	}
 	
 	
-	public void inserirAtualizar(Cliente x){
+	public void inserirAtualizar(Contrato x){
 		EM.getLocalEm().getTransaction().begin();
 		dao.inserirAtualizar(x);
 		EM.getLocalEm().getTransaction().commit();
 	}
 	
-	public void excluir(Cliente x){
+	public void excluir(Contrato x){
 		EM.getLocalEm().getTransaction().begin();
 		dao.excluir(x);
 		EM.getLocalEm().getTransaction().commit();
 	}
 	
-	public Cliente buscar(int cod){
+	public Contrato buscar(int cod){
 		return dao.buscar(cod);
 	}
 	
-	public List<Cliente> buscarTodos(){
+	public List<Contrato> buscarTodos(){
 		return dao.buscarTodos();
 	}
 

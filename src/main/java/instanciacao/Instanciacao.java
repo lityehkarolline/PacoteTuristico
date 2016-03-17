@@ -5,9 +5,6 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +17,13 @@ import dominio.Hotel;
 import dominio.Item;
 import dominio.Pacote;
 import dominio.Passeio;
+
+import servico.ClienteServico;
+import servico.ContratoServico;
+import servico.HotelServico;
+import servico.ItemServico;
+import servico.PacoteServico;
+import servico.PasseioServico;
 
 @WebServlet("/Instanciacao")
 public class Instanciacao extends HttpServlet {
@@ -65,45 +69,63 @@ public class Instanciacao extends HttpServlet {
 			Item i11 = new Item(null, 2, p4,ps8);
 			Item i12 = new Item(null, 3, p4,ps4);
 			
-			/*p1.addItem(i1);
-			p1.addItem(i2);
-			p1.addItem(i3);
-			
-			p2.addItem(i4);
-			p2.addItem(i5);
-			p2.addItem(i6);
-			
-			p3.addItem(i7);
-			p3.addItem(i8);
-			p3.addItem(i9);
-			
-			p4.addItem(i10);
-			p4.addItem(i11);
-			p4.addItem(i12);*/
-			
 			Contrato cr1 = new Contrato(null, sdf.parse("10/02/2016"), cl1, p2);
 			Contrato cr2 = new Contrato(null, sdf.parse("25/07/2016"), cl1, p3);
 			Contrato cr3 = new Contrato(null, sdf.parse("17/02/2016"), cl2, p1);
 			Contrato cr4 = new Contrato(null, sdf.parse("21/07/2016"), cl2, p4);
 			Contrato cr5 = new Contrato(null, sdf.parse("12/06/2016"), cl3, p1);
 			
-			/*cl1.addContrato(cr1);
-			cl1.addContrato(cr2);
-			cl2.addContrato(cr3);
-			cl2.addContrato(cr4);
-			cl3.addContrato(cr5);
+	
+			ClienteServico cls = new ClienteServico();
+			HotelServico hs = new HotelServico();
+			PasseioServico pss = PasseioServico();
+			PacoteServico ps = PacoteServico();
+			ItemServico is = ItemServico();
+			ContratoServico crs = ContratoServico();
 			
-			p1.addContrato(cr3);
-			p1.addContrato(cr5);
-			p2.addContrato(cr1);
-			p3.addContrato(cr2);
-			p4.addContrato(cr4);*/
+			cls.inserirAtualizar(cl1);
+			cls.inserirAtualizar(cl2);
+			cls.inserirAtualizar(cl3);
 			
-			//ArtistaServico as = new ArtistaServico();
-			//FilmeServico fs = new FilmeServico();
-			//ParticipacaoServico ps = new ParticipacaoServico();
+			hs.inserirAtualizar(h1);
+			hs.inserirAtualizar(h2);
+			hs.inserirAtualizar(h3);
 			
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("meujpa");
+			pss.inserirAtualizar(ps1);
+			pss.inserirAtualizar(ps2);
+			pss.inserirAtualizar(ps3);
+			pss.inserirAtualizar(ps4);
+			pss.inserirAtualizar(ps5);
+			pss.inserirAtualizar(ps6);
+			pss.inserirAtualizar(ps7);
+			pss.inserirAtualizar(ps8);
+			
+			ps.inserirAtualizar(p1);
+			ps.inserirAtualizar(p2);
+			ps.inserirAtualizar(p3);
+			ps.inserirAtualizar(p4);
+			
+			is.inserirAtualizar(i1);
+			is.inserirAtualizar(i2);
+			is.inserirAtualizar(i3);
+			is.inserirAtualizar(i4);
+			is.inserirAtualizar(i5);
+			is.inserirAtualizar(i6);
+			is.inserirAtualizar(i7);
+			is.inserirAtualizar(i8);
+			is.inserirAtualizar(i9);
+			is.inserirAtualizar(i10);
+			is.inserirAtualizar(i11);
+			is.inserirAtualizar(i12);
+			
+			crs.inserirAtualizar(cr1);
+			crs.inserirAtualizar(cr2);
+			crs.inserirAtualizar(cr3);
+			crs.inserirAtualizar(cr4);
+			crs.inserirAtualizar(cr5);
+					
+			
+			/*EntityManagerFactory emf = Persistence.createEntityManagerFactory("meujpa");
 			EntityManager em = emf.createEntityManager();
 			
 			em.getTransaction().begin();
@@ -151,7 +173,7 @@ public class Instanciacao extends HttpServlet {
 			
 			em.getTransaction().commit();
 			em.close();
-			emf.close();
+			emf.close();*/
 			
 			//response.getWriter().append("Preço Total do Pacote" + p1 + "\n");
 			//response.getWriter().append(p1.precoTotal() + "\n");
