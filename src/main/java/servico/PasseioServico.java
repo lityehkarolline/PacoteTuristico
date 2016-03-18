@@ -15,7 +15,6 @@ private PasseioDao dao;
 		dao = DaoFactory.criarPasseioDao();
 	}
 	
-	
 	public void inserirAtualizar(Passeio x){
 		EM.getLocalEm().getTransaction().begin();
 		dao.inserirAtualizar(x);

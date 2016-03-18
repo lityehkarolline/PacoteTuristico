@@ -9,7 +9,7 @@ import dao.impl.PasseioDaoImpl;
 
 public class DaoFactory {
 	
-	public static ClienteDao criarArtistaDao(){
+	public static ClienteDao criarClienteDao(){
 		return new ClienteDaoImpl();
 	}
 	

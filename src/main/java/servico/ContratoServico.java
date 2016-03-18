@@ -15,7 +15,6 @@ public class ContratoServico {
 		dao = DaoFactory.criarContratoDao();
 	}
 	
-	
 	public void inserirAtualizar(Contrato x){
 		EM.getLocalEm().getTransaction().begin();
 		dao.inserirAtualizar(x);

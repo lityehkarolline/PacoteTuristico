@@ -17,7 +17,6 @@ import dominio.Hotel;
 import dominio.Item;
 import dominio.Pacote;
 import dominio.Passeio;
-
 import servico.ClienteServico;
 import servico.ContratoServico;
 import servico.HotelServico;
@@ -75,13 +74,13 @@ public class Instanciacao extends HttpServlet {
 			Contrato cr4 = new Contrato(null, sdf.parse("21/07/2016"), cl2, p4);
 			Contrato cr5 = new Contrato(null, sdf.parse("12/06/2016"), cl3, p1);
 			
-	
+			
 			ClienteServico cls = new ClienteServico();
 			HotelServico hs = new HotelServico();
-			PasseioServico pss = PasseioServico();
-			PacoteServico ps = PacoteServico();
-			ItemServico is = ItemServico();
-			ContratoServico crs = ContratoServico();
+			PasseioServico pss = new PasseioServico();
+			PacoteServico ps = new PacoteServico();
+			ItemServico is = new ItemServico();
+			ContratoServico crs = new ContratoServico();
 			
 			cls.inserirAtualizar(cl1);
 			cls.inserirAtualizar(cl2);
