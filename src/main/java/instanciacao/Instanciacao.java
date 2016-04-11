@@ -23,6 +23,7 @@ import servico.HotelServico;
 import servico.ItemServico;
 import servico.PacoteServico;
 import servico.PasseioServico;
+import servico.ServicoException;
 
 @WebServlet("/Instanciacao")
 public class Instanciacao extends HttpServlet {
@@ -33,7 +34,7 @@ public class Instanciacao extends HttpServlet {
 		try{
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
-			Cliente cl1 = new Cliente(null, "Helena", "helena@hotmail.com", "(34) 99145-7898", "111.222.333-4", sdf.parse("24/03/1986"), new BigDecimal("4400.00"));
+			Cliente cl1 = new Cliente(null, "Helena", "helena@hotmail.com", "(34) 99145-7898", "111.222.333-40", sdf.parse("24/03/1986"), new BigDecimal("4400.00"));
 			Cliente cl2 = new Cliente(null, "Marcos", "marcos@hotmail.com", "(34) 99288-5568", "555.444.666-00", sdf.parse("12/07/1974"), new BigDecimal("3000.00"));
 			Cliente cl3 = new Cliente(null, "Rita", "rita@hotmail.com", "(34) 99685-2259", "777.888.999-11", sdf.parse("03/01/1993"), new BigDecimal("1500.00"));
 
@@ -41,14 +42,16 @@ public class Instanciacao extends HttpServlet {
 			Hotel h2 = new Hotel(null, "Hotel do Porto", "Porto Seguro", new BigDecimal("140.00"));
 			Hotel h3 = new Hotel(null, "Hibs Hotel", "Rio de Janeir", new BigDecimal("120.00"));
 			
-			Passeio ps1 = new Passeio(null, "Recife de Fora", new BigDecimal("120.00"));
-			Passeio ps2 = new Passeio(null, "Ilha dos Aquários", new BigDecimal("60.00"));
-			Passeio ps3 = new Passeio(null, "Pão de Açúcar", new BigDecimal("45.00"));
-			Passeio ps4 = new Passeio(null, "Corcovado", new BigDecimal("60.00"));
-			Passeio ps5 = new Passeio(null, "Cidade Histórica", new BigDecimal("10.00"));
-			Passeio ps6 = new Passeio(null, "Eco Parque Arraial d' Ajuda", new BigDecimal("100.00"));
-			Passeio ps7 = new Passeio(null, "Cristo Redentor", new BigDecimal("60.00"));
-			Passeio ps8 = new Passeio(null, "Floresta da Tijuca", new BigDecimal("50.00"));
+			Passeio ps1 = new Passeio(null, "Recife de Fora", new BigDecimal("120.00"), "Arraial d’ Ajuda");
+			Passeio ps2 = new Passeio(null, "Ilha dos Aquários", new BigDecimal("60.00"), "Arraial d’ Ajuda");
+			Passeio ps3 = new Passeio(null, "Pão de Açúcar", new BigDecimal("45.00"), "Rio de Janeir");
+			Passeio ps4 = new Passeio(null, "Corcovado", new BigDecimal("60.00"), "Rio de Janeir");
+			Passeio ps5 = new Passeio(null, "Cidade Histórica", new BigDecimal("10.00"), "Porto Seguro");
+			Passeio ps6 = new Passeio(null, "Eco Parque Arraial d' Ajuda", new BigDecimal("100.00"), "Arraial d’ Ajuda");
+			Passeio ps7 = new Passeio(null, "Cristo Redentor", new BigDecimal("60.00"), "Rio de Janeir");
+			Passeio ps8 = new Passeio(null, "Floresta da Tijuca", new BigDecimal("50.00"), "Rio de Janeir");
+			Passeio ps9 = new Passeio(null, "Cabralia-Escuna", new BigDecimal("100.00"), "Porto Seguro");
+			Passeio ps10 = new Passeio(null, "Banana Boat", new BigDecimal("40.00"), "Porto Seguro");
 			
 			Pacote p1 = new Pacote(null, "Ferias de julho Arraial d’ ajuda", 6, h1);
 			Pacote p2 = new Pacote(null, "Ferias Final de ano Porto Seguro", 12, h2);
@@ -59,8 +62,8 @@ public class Instanciacao extends HttpServlet {
 			Item i2 = new Item(null, 2, p1,ps6);
 			Item i3 = new Item(null, 3, p1,ps2);
 			Item i4 = new Item(null, 1, p2,ps5);
-			Item i5 = new Item(null, 2, p2,ps1);
-			Item i6 = new Item(null, 3, p2,ps2);
+			Item i5 = new Item(null, 2, p2,ps9);
+			Item i6 = new Item(null, 3, p2,ps10);
 			Item i7 = new Item(null, 1, p3,ps3);
 			Item i8 = new Item(null, 2, p3,ps7);
 			Item i9 = new Item(null, 3, p3,ps4);
@@ -98,6 +101,8 @@ public class Instanciacao extends HttpServlet {
 			pss.inserirAtualizar(ps6);
 			pss.inserirAtualizar(ps7);
 			pss.inserirAtualizar(ps8);
+			pss.inserirAtualizar(ps9);
+			pss.inserirAtualizar(ps10);
 			
 			ps.inserirAtualizar(p1);
 			ps.inserirAtualizar(p2);
@@ -185,6 +190,9 @@ public class Instanciacao extends HttpServlet {
 		}
 		catch (ParseException e){
 			response.getWriter().append("Erro ao instanciar data. Instanciação não cria!");
+		}
+		catch(ServicoException e){
+			response.getWriter().append("Erro! " + e.getMessage());
 		}
 		
 	}

@@ -16,8 +16,12 @@ private ClienteDao dao;
 	}
 	
 	
-	public void inserirAtualizar(Cliente x){
+	public void inserirAtualizar(Cliente x) throws ServicoException {
 		try {
+			Cliente aux = dao.buscarCpfExato(x.getCpf());
+			if (aux != null){
+				throw new ServicoException("CPF já existente!", 1);
+			}
 			Transaction.begin();
 			dao.inserirAtualizar(x);
 			Transaction.commit();
@@ -51,5 +55,11 @@ private ClienteDao dao;
 	public List<Cliente> buscarTodos(){
 		return dao.buscarTodos();
 	}
+	
+	public List<Cliente> buscarTodosOrdenadosPorNome(){
+		return dao.buscarTodosOrdenadosPorNome();
+	}
 
+	
+	
 }

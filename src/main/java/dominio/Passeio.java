@@ -22,6 +22,7 @@ public class Passeio implements Serializable {
 	private Integer codPasseio;
 	private String nome;
 	private BigDecimal preco;
+	private String cidade;
 	
 	@OneToMany(mappedBy="passeio")
 	private List<Item> itens;
@@ -30,11 +31,12 @@ public class Passeio implements Serializable {
 		itens = new ArrayList<>();
 	}
 
-	public Passeio(Integer codPasseio, String nome, BigDecimal preco) {
+	public Passeio(Integer codPasseio, String nome, BigDecimal preco, String cidade) {
 		super();
 		this.codPasseio = codPasseio;
 		this.nome = nome;
 		this.preco = preco;
+		this.cidade = cidade;
 		itens = new ArrayList<>();
 	}
 
@@ -59,7 +61,16 @@ public class Passeio implements Serializable {
 	}
 
 	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
+		this.preco = preco;	
+		
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
 	}
 
 	public List<Item> getItens() {
@@ -82,9 +93,9 @@ public class Passeio implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Passeio [codPasseio=" + codPasseio + ", nome=" + nome + ", preco=" + preco + "]";
+		return "Passeio [codPasseio=" + codPasseio + ", nome=" + nome + ", preco=" + preco + ", cidade=" + cidade + "]";
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -109,8 +120,5 @@ public class Passeio implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
 	
 }
