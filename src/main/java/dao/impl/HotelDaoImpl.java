@@ -1,5 +1,6 @@
 package dao.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -39,7 +40,18 @@ public class HotelDaoImpl implements HotelDao {
 	@Override
 	public List<Hotel> buscarTodos() {
 		String jpql = "SELECT x FROM Hotel x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
+		return query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Hotel> buscarPorNomeDiaria(String nome, BigDecimal diariaMin, BigDecimal diariaMax) {
+		String jpql = "SELECT x FROM Hotel x WHERE x.nome LIKE :p1 AND x.diaria >= :p2 AND x.diaria <= :p3";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", "%"+nome+"%");
+		query.setParameter("p2", diariaMin);
+		query.setParameter("p3", diariaMax);
 		return query.getResultList();
 	}
 

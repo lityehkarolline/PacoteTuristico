@@ -16,7 +16,7 @@ private ClienteDao dao;
 	}
 	
 	
-	public void inserirAtualizar(Cliente x) throws ServicoException {
+	public void inserir(Cliente x) throws ServicoException {
 		try {
 			Cliente aux = dao.buscarCpfExato(x.getCpf());
 			if (aux != null){
@@ -34,8 +34,31 @@ private ClienteDao dao;
 		}
 	}
 	
-	public void excluir(Cliente x){
+	public void atualizar(Cliente x) throws ServicoException {
 		try {
+			Cliente aux = dao.buscarCpfExatoDiferente(x.getCodCliente(),x.getCpf());
+			if (aux != null){
+				throw new ServicoException("CPF já existente!", 1);
+			}
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		}
+		catch (RuntimeException e) {
+			if (Transaction.isActive()){
+				Transaction.rollback();
+			}
+			System.out.println("Erro" + e.getMessage());
+		}
+	}
+	
+	public void excluir(Cliente x)throws ServicoException {
+		try {
+			x = dao.buscar(x.getCodCliente());
+			if (!x.getContratos().isEmpty()){
+				throw new ServicoException("Exclusão não permitida: este artista possui contratos!", 2);
+			}
+			
 			Transaction.begin();
 			dao.excluir(x);
 			Transaction.commit();
@@ -60,6 +83,8 @@ private ClienteDao dao;
 		return dao.buscarTodosOrdenadosPorNome();
 	}
 
-	
+	public List<Cliente> buscarPorNome(String trecho){
+		return dao.buscarPorNome(trecho);
+	}
 	
 }

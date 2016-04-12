@@ -39,7 +39,7 @@ public class PasseioDaoImpl implements PasseioDao {
 	@Override
 	public List<Passeio> buscarTodos() {
 		String jpql = "SELECT x FROM Passeio x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
 

@@ -39,7 +39,7 @@ public class PacoteDaoImpl implements PacoteDao {
 	@Override
 	public List<Pacote> buscarTodos() {
 		String jpql = "SELECT x FROM Pacote x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
 

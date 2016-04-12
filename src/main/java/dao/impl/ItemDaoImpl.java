@@ -39,7 +39,7 @@ public class ItemDaoImpl implements ItemDao {
 	@Override
 	public List<Item> buscarTodos() {
 		String jpql = "SELECT x FROM Item x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
 

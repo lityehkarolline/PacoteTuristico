@@ -39,7 +39,7 @@ public class ContratoDaoImpl implements ContratoDao {
 	@Override
 	public List<Contrato> buscarTodos() {
 		String jpql = "SELECT x FROM Contrato x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
 

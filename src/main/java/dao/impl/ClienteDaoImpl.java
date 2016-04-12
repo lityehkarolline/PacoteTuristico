@@ -39,7 +39,7 @@ public class ClienteDaoImpl implements ClienteDao {
 	@Override
 	public List<Cliente> buscarTodos() {
 		String jpql = "SELECT x FROM Cliente x";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
 	
@@ -47,19 +47,39 @@ public class ClienteDaoImpl implements ClienteDao {
 	@Override
 	public List<Cliente> buscarTodosOrdenadosPorNome() {
 		String jpql = "SELECT x FROM Cliente x ORDER BY x.nome";
-		Query query = em.createNamedQuery(jpql);
+		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
 	public Cliente buscarCpfExato(String cpf) {
 		String jpql = "SELECT x FROM Cliente x WHERE x.cpf = :p1";
 		Query query = em.createQuery(jpql);
 		query.setParameter("p1", cpf);
 		List<Cliente> aux = query.getResultList();
 		return (aux.size() > 0) ? aux.get(0) : null;
-		
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Cliente buscarCpfExatoDiferente(Integer codigo, String cpf) {
+		String jpql = "SELECT x FROM Cliente x WHERE x.codCliente <> :p0 AND x.cpf = :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p0", codigo);
+		query.setParameter("p1", cpf);
+		List<Cliente> aux = query.getResultList();
+		return (aux.size() > 0) ? aux.get(0) : null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	 public List<Cliente> buscarPorNome(String trecho) {
+		String jpql = "SELECT x FROM Cliente x WHERE x.nome LIKE :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", "%"+trecho+"%");
+		return query.getResultList();
+	}
 	
 	
 

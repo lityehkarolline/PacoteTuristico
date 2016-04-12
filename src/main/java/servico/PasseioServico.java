@@ -50,5 +50,8 @@ private PasseioDao dao;
 	public List<Passeio> buscarTodos(){
 		return dao.buscarTodos();
 	}
-
+		
+	/*public String buscarPorCidade() {
+	 * cidade do passeio tem q ser igual a cidade hotel
+	}*/
 }

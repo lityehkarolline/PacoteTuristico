@@ -1,5 +1,6 @@
 package servico;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import dao.DaoFactory;
@@ -50,6 +51,10 @@ private HotelDao dao;
 	
 	public List<Hotel> buscarTodos(){
 		return dao.buscarTodos();
+	}
+	
+	public List<Hotel> buscarPorNomeDiaria(String nome, BigDecimal diariaMin, BigDecimal diariaMax) {
+		return dao.buscarPorNomeDiaria(nome, diariaMin, diariaMax);
 	}
 
 }
