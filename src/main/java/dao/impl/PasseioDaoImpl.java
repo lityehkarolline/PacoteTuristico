@@ -42,5 +42,14 @@ public class PasseioDaoImpl implements PasseioDao {
 		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	 public List<Passeio> buscarPorCidade(String trecho) {
+		String jpql = "SELECT x FROM Passeio x WHERE x.cidade LIKE :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", "%"+trecho+"%");
+		return query.getResultList();
+	}
 
 }

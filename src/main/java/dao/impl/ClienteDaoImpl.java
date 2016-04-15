@@ -74,6 +74,27 @@ public class ClienteDaoImpl implements ClienteDao {
 	
 	@SuppressWarnings("unchecked")
 	@Override
+	public Cliente buscarNomeExato(String nome) {
+		String jpql = "SELECT x FROM Cliente x WHERE x.nome = :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", nome);
+		List<Cliente> c = query.getResultList();
+		return (c.size() > 0) ? c.get(0) : null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Cliente  buscarNomeExatoDiferente(Integer codigo, String nome) {
+		String jpql = "SELECT x FROM Cliente x WHERE x.codCliente <> :p0 AND x.nome = :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p0", codigo);
+		query.setParameter("p1", nome);
+		List<Cliente> c = query.getResultList();
+		return (c.size() > 0) ? c.get(0) : null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
 	 public List<Cliente> buscarPorNome(String trecho) {
 		String jpql = "SELECT x FROM Cliente x WHERE x.nome LIKE :p1";
 		Query query = em.createQuery(jpql);

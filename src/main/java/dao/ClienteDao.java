@@ -12,7 +12,14 @@ public interface ClienteDao {
 	public List<Cliente> buscarTodos();
 	
 	public List<Cliente> buscarTodosOrdenadosPorNome();
+	
 	public Cliente buscarCpfExato(String cpf);
+	
 	public Cliente buscarCpfExatoDiferente(Integer codigo, String cpf);
+	
+	public Cliente buscarNomeExato(String nome);
+	
+	public Cliente buscarNomeExatoDiferente(Integer codigo, String nome);
+	
 	public List<Cliente> buscarPorNome(String trecho);
 }

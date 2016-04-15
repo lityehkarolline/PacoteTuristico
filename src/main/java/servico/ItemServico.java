@@ -16,7 +16,14 @@ private ItemDao dao;
 	}
 	
 	
-	public void inserirAtualizar(Item x){
+	public void inserir(Item x) throws ServicoException {
+		
+		/*Item aux = dao.buscarExato(x.getPasseio(), x.getPacote());
+		if (aux != null){
+			throw new ServicoException("Este" + "passeio" +x.getPasseio().getNome()+
+					" já esta cadastrado no" +"pacote"+ x.getPacote().getNome(), 1);
+		}*/
+		
 		try {
 			Transaction.begin();
 			dao.inserirAtualizar(x);
@@ -29,6 +36,24 @@ private ItemDao dao;
 			System.out.println("Erro" + e.getMessage());
 		}
 	}
+	
+	/*public void atualizar(Item x)throws ServicoException {
+		Item aux = dao.buscarExatoDiferente(x.getCodPasseio(), x.getPacote());
+		if (aux != null){
+			throw new ServicoException("Este" + "passeio" +x.getPasseio().getNome()+ " já esta cadastrado no" +"pacote"+ x.getPacote().getNome(), 1);
+		}
+		try {
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		}
+		catch (RuntimeException e) {
+			if (Transaction.isActive()){
+				Transaction.rollback();
+			}
+			System.out.println("Erro" + e.getMessage());
+		}
+	}*/
 	
 	public void excluir(Item x){
 		try {

@@ -42,5 +42,8 @@ public class PacoteDaoImpl implements PacoteDao {
 		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
+	
+	
 
+	
 }

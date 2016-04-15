@@ -40,18 +40,28 @@ public class Instanciacao extends HttpServlet {
 
 			Hotel h1 = new Hotel(null, "Hotel Tulipas", "Arraial d’ Ajuda", new BigDecimal("150.00"));
 			Hotel h2 = new Hotel(null, "Hotel do Porto", "Porto Seguro", new BigDecimal("140.00"));
-			Hotel h3 = new Hotel(null, "Hibs Hotel", "Rio de Janeir", new BigDecimal("120.00"));
+			Hotel h3 = new Hotel(null, "Hibs Hotel", "Rio de Janeiro", new BigDecimal("120.00"));
 			
 			Passeio ps1 = new Passeio(null, "Recife de Fora", new BigDecimal("120.00"), "Arraial d’ Ajuda");
 			Passeio ps2 = new Passeio(null, "Ilha dos Aquários", new BigDecimal("60.00"), "Arraial d’ Ajuda");
-			Passeio ps3 = new Passeio(null, "Pão de Açúcar", new BigDecimal("45.00"), "Rio de Janeir");
-			Passeio ps4 = new Passeio(null, "Corcovado", new BigDecimal("60.00"), "Rio de Janeir");
+			Passeio ps3 = new Passeio(null, "Pão de Açúcar", new BigDecimal("45.00"), "Rio de Janeiro");
+			Passeio ps4 = new Passeio(null, "Corcovado", new BigDecimal("60.00"), "Rio de Janeiro");
 			Passeio ps5 = new Passeio(null, "Cidade Histórica", new BigDecimal("10.00"), "Porto Seguro");
 			Passeio ps6 = new Passeio(null, "Eco Parque Arraial d' Ajuda", new BigDecimal("100.00"), "Arraial d’ Ajuda");
-			Passeio ps7 = new Passeio(null, "Cristo Redentor", new BigDecimal("60.00"), "Rio de Janeir");
-			Passeio ps8 = new Passeio(null, "Floresta da Tijuca", new BigDecimal("50.00"), "Rio de Janeir");
+			Passeio ps7 = new Passeio(null, "Cristo Redentor", new BigDecimal("60.00"), "Rio de Janeiro");
+			Passeio ps8 = new Passeio(null, "Floresta da Tijuca", new BigDecimal("50.00"), "Rio de Janeiro");
 			Passeio ps9 = new Passeio(null, "Cabralia-Escuna", new BigDecimal("100.00"), "Porto Seguro");
 			Passeio ps10 = new Passeio(null, "Banana Boat", new BigDecimal("40.00"), "Porto Seguro");
+			
+			Passeio ps11 = new Passeio(null, "Barraca Toa Toa", new BigDecimal("10.00"), "Porto Seguro");
+			Passeio ps12 = new Passeio(null, "Barraca Axé Moa", new BigDecimal("10.00"), "Porto Seguro");
+			
+			Passeio ps13 = new Passeio(null, "Praia do Espelho", new BigDecimal("30.00"), "Arraial d’ Ajuda");
+			Passeio ps14 = new Passeio(null, "Praia dos Coqueiros", new BigDecimal("35.00"), "Arraial d’ Ajuda");
+			
+			Passeio ps15 = new Passeio(null, "Prainhas do Pontal", new BigDecimal("55.00"), "Rio de Janeiro");
+			Passeio ps16 = new Passeio(null, "Praia do Farol", new BigDecimal("50.00"), "Rio de Janeiro");
+			
 			
 			Pacote p1 = new Pacote(null, "Ferias de julho Arraial d’ ajuda", 6, h1);
 			Pacote p2 = new Pacote(null, "Ferias Final de ano Porto Seguro", 12, h2);
@@ -108,23 +118,45 @@ public class Instanciacao extends HttpServlet {
 			pss.inserirAtualizar(ps9);
 			pss.inserirAtualizar(ps10);
 			
+			pss.inserirAtualizar(ps11);
+			pss.inserirAtualizar(ps12);
+			
+			pss.inserirAtualizar(ps13);
+			pss.inserirAtualizar(ps14);
+			
+			pss.inserirAtualizar(ps15);
+			pss.inserirAtualizar(ps16);
+			
 			ps.inserirAtualizar(p1);
 			ps.inserirAtualizar(p2);
 			ps.inserirAtualizar(p3);
 			ps.inserirAtualizar(p4);
 			
-			is.inserirAtualizar(i1);
-			is.inserirAtualizar(i2);
-			is.inserirAtualizar(i3);
-			is.inserirAtualizar(i4);
-			is.inserirAtualizar(i5);
-			is.inserirAtualizar(i6);
-			is.inserirAtualizar(i7);
-			is.inserirAtualizar(i8);
-			is.inserirAtualizar(i9);
-			is.inserirAtualizar(i10);
-			is.inserirAtualizar(i11);
-			is.inserirAtualizar(i12);
+			is.inserir(i1);
+			is.inserir(i2);
+			is.inserir(i3);
+			is.inserir(i4);
+			is.inserir(i5);
+			is.inserir(i6);
+			is.inserir(i7);
+			is.inserir(i8);
+			is.inserir(i9);
+			is.inserir(i10);
+			is.inserir(i11);
+			is.inserir(i12);
+			
+			//is.atualizar(i1);
+			//is.atualizar(i2);
+			//is.atualizar(i3);
+			//is.atualizar(i4);
+			//is.atualizar(i5);
+			//is.atualizar(i6);
+			//is.atualizar(i7);
+			//is.atualizar(i8);
+			//is.atualizar(i9);
+			//is.atualizar(i10);
+			//is.atualizar(i11);
+			//is.atualizar(i12);
 			
 			crs.inserirAtualizar(cr1);
 			crs.inserirAtualizar(cr2);

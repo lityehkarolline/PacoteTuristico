@@ -42,5 +42,18 @@ public class ItemDaoImpl implements ItemDao {
 		Query query = em.createQuery(jpql);
 		return query.getResultList();
 	}
+	
+	/*@SuppressWarnings("unchecked")
+	@Override
+	public Item buscarExato(Passeio passeio, Pacote pacote){
+
+		String jpql = "SELECT x FROM Item x WHERE x.passeio = :p1 AND x.pacote = :p2";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", passeio);
+		query.setParameter("p2", pacote);
+		List<Item> aux = query.getResultList();
+		return (aux.size() > 0) ? aux.get(0) : null;
+	}*/
+	
 
 }

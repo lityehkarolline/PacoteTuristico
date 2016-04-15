@@ -11,5 +11,6 @@ public interface PasseioDao {
 	public Passeio buscar(int cod);
 	public List<Passeio> buscarTodos();
 	
+	public List<Passeio> buscarPorCidade(String trecho);
 
 }

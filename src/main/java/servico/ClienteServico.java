@@ -15,13 +15,18 @@ private ClienteDao dao;
 		dao = DaoFactory.criarClienteDao();
 	}
 	
-	
 	public void inserir(Cliente x) throws ServicoException {
 		try {
 			Cliente aux = dao.buscarCpfExato(x.getCpf());
 			if (aux != null){
 				throw new ServicoException("CPF já existente!", 1);
 			}
+			
+			Cliente c = dao.buscarNomeExato(x.getNome());
+			if (c != null){
+				throw new ServicoException("Já existe um cliente com esse nome!", 1);
+			}
+			
 			Transaction.begin();
 			dao.inserirAtualizar(x);
 			Transaction.commit();
@@ -40,6 +45,12 @@ private ClienteDao dao;
 			if (aux != null){
 				throw new ServicoException("CPF já existente!", 1);
 			}
+			
+			Cliente c = dao.buscarNomeExatoDiferente(x.getCodCliente(),x.getNome());
+			if (c != null){
+				throw new ServicoException("Já existe um cliente com esse nome!", 1);
+			}
+			
 			Transaction.begin();
 			dao.inserirAtualizar(x);
 			Transaction.commit();
@@ -56,7 +67,7 @@ private ClienteDao dao;
 		try {
 			x = dao.buscar(x.getCodCliente());
 			if (!x.getContratos().isEmpty()){
-				throw new ServicoException("Exclusão não permitida: este artista possui contratos!", 2);
+				throw new ServicoException("Exclusão não permitida: este cliente possui contratos!", 2);
 			}
 			
 			Transaction.begin();
