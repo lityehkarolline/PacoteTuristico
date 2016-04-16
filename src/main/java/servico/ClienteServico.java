@@ -21,11 +21,11 @@ private ClienteDao dao;
 			if (aux != null){
 				throw new ServicoException("CPF já existente!", 1);
 			}
-			
+			/*
 			Cliente c = dao.buscarNomeExato(x.getNome());
 			if (c != null){
 				throw new ServicoException("Já existe um cliente com esse nome!", 1);
-			}
+			}*/
 			
 			Transaction.begin();
 			dao.inserirAtualizar(x);
@@ -45,11 +45,11 @@ private ClienteDao dao;
 			if (aux != null){
 				throw new ServicoException("CPF já existente!", 1);
 			}
-			
+			/*
 			Cliente c = dao.buscarNomeExatoDiferente(x.getCodCliente(),x.getNome());
 			if (c != null){
 				throw new ServicoException("Já existe um cliente com esse nome!", 1);
-			}
+			}*/
 			
 			Transaction.begin();
 			dao.inserirAtualizar(x);

@@ -44,6 +44,13 @@ public class PacoteDaoImpl implements PacoteDao {
 	}
 	
 	
-
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Pacote> buscarPorCidade(String nome) {
+		String jpql = "SELECT x FROM Pacote x WHERE x.hotel.cidade = :p1";
+		Query query = em.createQuery(jpql);
+		query.setParameter("p1", nome);
+		return query.getResultList();
+	}
 	
 }
