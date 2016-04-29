@@ -52,6 +52,9 @@ private PacoteDao dao;
 		return dao.buscarTodos();
 	}
 	
+	public List<Pacote> buscarPorCidade(String nome) {
+		return dao.buscarPorCidade(nome);
+	}
 	
 
 }

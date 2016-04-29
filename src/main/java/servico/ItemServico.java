@@ -6,6 +6,7 @@ import dao.DaoFactory;
 import dao.ItemDao;
 import dao.Transaction;
 import dominio.Item;
+import dominio.Pacote;
 
 public class ItemServico {
 
@@ -23,7 +24,14 @@ private ItemDao dao;
 			throw new ServicoException("Este" +x.getCodItem() + "passeio" +x.getPasseio().getNome()+
 					" já esta cadastrado no" +"pacote"+ x.getPacote().getNome(), 1);
 		}*/
-		
+
+		Pacote pac = x.getPacote();
+		for (Item it : pac.getItens()) {
+			if (it.getPasseio().equals(x.getPasseio())) {
+				throw new ServicoException("Este passeio já pertence ao pacote!", 1);
+			}
+		}
+
 		try {
 			Transaction.begin();
 			dao.inserirAtualizar(x);
