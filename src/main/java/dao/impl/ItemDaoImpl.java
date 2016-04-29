@@ -45,10 +45,11 @@ public class ItemDaoImpl implements ItemDao {
 	
 	/*@SuppressWarnings("unchecked")
 	@Override
-	public Item buscarExato(Passeio passeio, Pacote pacote){
+	public Item buscarExato(Integer codItem, Passeio passeio, Pacote pacote){
 
-		String jpql = "SELECT x FROM Item x WHERE x.passeio = :p1 AND x.pacote = :p2";
+		String jpql = "SELECT x FROM Item x WHERE x.codItem = :p0 AND x.passeio = :p1 AND x.pacote = :p2";
 		Query query = em.createQuery(jpql);
+		query.setParameter("p0", codItem);
 		query.setParameter("p1", passeio);
 		query.setParameter("p2", pacote);
 		List<Item> aux = query.getResultList();

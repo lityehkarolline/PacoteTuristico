@@ -18,9 +18,9 @@ private ItemDao dao;
 	
 	public void inserir(Item x) throws ServicoException {
 		
-		/*Item aux = dao.buscarExato(x.getPasseio(), x.getPacote());
+		/*Item aux = dao.buscarExato(x.getCodItem(), x.getPasseio(), x.getPacote());
 		if (aux != null){
-			throw new ServicoException("Este" + "passeio" +x.getPasseio().getNome()+
+			throw new ServicoException("Este" +x.getCodItem() + "passeio" +x.getPasseio().getNome()+
 					" já esta cadastrado no" +"pacote"+ x.getPacote().getNome(), 1);
 		}*/
 		

@@ -11,5 +11,5 @@ public interface ItemDao {
 	public Item buscar(int cod);
 	public List<Item> buscarTodos();
 	
-	//public Item buscarExato(Passeio passeio, Pacote pacote);
+	//public Item buscarExato(Integer codItem, Passeio passeio, Pacote pacote);
 }

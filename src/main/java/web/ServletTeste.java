@@ -1,10 +1,8 @@
 package web;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dominio.Cliente;
-import dominio.Hotel;
+import dominio.Item;
+import dominio.Pacote;
+import dominio.Passeio;
 import servico.ClienteServico;
 import servico.ContratoServico;
 import servico.HotelServico;
@@ -82,6 +81,21 @@ public class ServletTeste extends HttpServlet {
 					}*/
 		
 		
+		/*// Tentando inserir uma participacao repetida:
+		
+				Pacote p4 = ps.buscar(2);
+				Passeio ps3 = pss.buscar(1);
+		 		
+				Item i = new Item(null, 1, p4, ps3);
+				try {
+					is.inserir(i);
+					response.getWriter().append("Participacao inserida!\n");
+					}
+				catch (ServicoException e) {
+						response.getWriter().append(e.getMessage());
+				}
+				
+		//Item i1 = new Item(null, 1, p1,ps1);*/
 		
 	}
 	catch (ParseException e) {
