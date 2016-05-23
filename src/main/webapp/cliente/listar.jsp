@@ -26,24 +26,25 @@
 		<div class="page-header">
 			<h1>Clientes</h1>
 		</div>
-		
+
 		<div class="row">
-		
+
 			<div class="col-sm-2">
-				<form class="navbar-form" action="<%=request.getContextPath()%>/cliente/novo">
+				<form class="navbar-form"
+					action="<%=request.getContextPath()%>/cliente/novo">
 					<button type="submit" class="btn btn-primary">Inserir novo</button>
 				</form>
 			</div>
-			
-			<div class="col-sm-6"> 
+
+			<div class="col-sm-6">
 				<form class="navbar-form" action="<%=request.getContextPath()%>/cliente/filtrar">
 					<div class="form-group">
-						<input type="text" name="busca" placeholder="Digite um nome" class="form-control"/>
+						<input type="text" name="busca" placeholder="Digite um nome" class="form-control" />
 					</div>
 					<button type="submit" class="btn btn-success">Filtrar</button>
 				</form>
 			</div>
-		
+
 		</div>
 
 		<table class="table">
@@ -67,10 +68,15 @@
 						<td>${x.email}</td>
 						<td>${x.telefone}</td>
 						<td>${x.cpf}</td>
-						<td><fmt:formatDate type="date" pattern="dd/MM/yyyy" value="${x.nascimento}"/></td>
-						<td><fmt:setLocale value="pt_br"/><fmt:formatNumber type="currency" value="${x.rendaMensal}"/></td>
-						<td><a href="<%=request.getContextPath()%>/cliente/editar?cod=${x.codCliente}" class="btn btn-primary btn-xs">Editar</a>
-						<a href="<%=request.getContextPath()%>/cliente/remover?cod=${x.codCliente}" class="btn btn-danger btn-xs">Excluir</a></td>
+						<td><fmt:formatDate type="date" pattern="dd/MM/yyyy"
+								value="${x.nascimento}" /></td>
+						<td><fmt:setLocale value="pt_br" />
+							<fmt:formatNumber type="currency" value="${x.rendaMensal}" /></td>
+						<td><a
+							href="<%=request.getContextPath()%>/cliente/editar?cod=${x.codCliente}"
+							class="btn btn-primary btn-xs">Editar</a> <a
+							href="<%=request.getContextPath()%>/cliente/remover?cod=${x.codCliente}"
+							class="btn btn-danger btn-xs">Excluir</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -82,6 +88,7 @@
 
 	<!-- Core JS -->
 	<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 </body>
 </html>
