@@ -19,11 +19,11 @@
 	<!-- Begin page content -->
 	<div class="container">
 		<div class="page-header">
-			<h1>Página Inicial</h1>
+			<h1>Título da página</h1>
 		</div>
-		<p class="lead">Sistema didático Java para web.</p>
-		<p>EducandoWeb - <a href="https://youtube.com/educandoweb">youtube.com/educandoweb</a></p>
-		</div>
+		<p class="lead">Texto grande</p>
+		<p>Texto menor</p>
+	</div>
 
 	<jsp:include page="/resources/templates/rodape.jsp"></jsp:include>
 
