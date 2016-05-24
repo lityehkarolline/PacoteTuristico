@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import dominio.Cliente;
 import servico.ClienteServico;
 import servico.ServicoException;
+import servico.ValidacaoException;
 
 @WebServlet("/cliente/inserir")
 public class ClienteInserir extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static String DESTINO = "/cliente/listar.jsp";
+	private static String FORM = "/cliente/formInserir.jsp";
 	private static String ERRO = "/publico/erro.jsp";
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -26,6 +28,7 @@ public class ClienteInserir extends HttpServlet {
 		ClienteServico cl = new ClienteServico();
 		Cliente x = Instanciar.cliente(request);
 		try {
+			cl.validar(x);
 			cl.inserir(x);
 			List<Cliente> itens = cl.buscarTodosOrdenadosPorNome();
 			request.setAttribute("itens", itens);
@@ -33,6 +36,10 @@ public class ClienteInserir extends HttpServlet {
 		} catch (ServicoException e) {
 			request.setAttribute("msg", e.getMessage());
 			request.getRequestDispatcher(ERRO).forward(request, response);
+		}catch(ValidacaoException e){
+			request.setAttribute("erros", e.getErros());
+			request.setAttribute("item", x);
+			request.getRequestDispatcher(FORM).forward(request, response);
 		}
 		
 	}

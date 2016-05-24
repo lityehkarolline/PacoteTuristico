@@ -19,7 +19,12 @@ public class Instanciar {
 		
 		s = request.getParameter("codCliente");
 		if(s!=null && !s.isEmpty()){
-			aux.setCodCliente(Integer.parseInt(s));
+			try {
+				aux.setCodCliente(Integer.parseInt(s));
+			}catch (NumberFormatException e) {
+				System.out.println("Erro: codCliente");
+			}
+			
 		}
 		
 		s = request.getParameter("nome");
@@ -47,17 +52,23 @@ public class Instanciar {
 			try {
 				aux.setNascimento(sdf.parse(s));
 			} catch (ParseException e) {
-				e.printStackTrace();
+				System.out.println("Erro: nascimento");
 			}	
 		}
 		
 		s = request.getParameter("rendaMensal");
 		if(s!=null && !s.isEmpty()){
-			aux.setRendaMensal(	new BigDecimal(s));
+			try {
+			aux.setRendaMensal(new BigDecimal(s));
+			}
+			catch (NumberFormatException e) {
+				System.out.println("Erro: rendaMensal");
+			}
+			
 		}
 		
 		return aux;
 		
-	}
+		}	
 	
 }

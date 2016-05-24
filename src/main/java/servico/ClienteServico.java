@@ -1,5 +1,6 @@
 package servico;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.ClienteDao;
@@ -15,18 +16,45 @@ private ClienteDao dao;
 		dao = DaoFactory.criarClienteDao();
 	}
 	
+	public void validar(Cliente x) throws ValidacaoException {
+		List<String> erros = new ArrayList<>();
+		
+		if (x.getNome()==null) {
+			erros.add("Favor preencher o campo nome");
+		}
+		
+		if (x.getEmail()==null) {
+			erros.add("Favor preencher o campo email");
+		}
+		
+		if (x.getTelefone()==null) {
+			erros.add("Favor preencher o campo telefone");
+		}
+		
+		if (x.getCpf()==null) {
+			erros.add("Favor preencher o campo CPF coretamente");
+		}
+		
+		if (x.getNascimento()==null) {
+			erros.add("Favor preencher um valor valido para a data de nascimento");
+		}
+		
+		if (x.getRendaMensal()==null) {
+			erros.add("Favor preencher o campo Renda Mensal com um valor valido");
+		}
+		
+		if (!erros.isEmpty()) {
+			throw new ValidacaoException("Erro de validação", erros);
+		}
+		
+	}
+	
 	public void inserir(Cliente x) throws ServicoException {
 		try {
 			Cliente aux = dao.buscarCpfExato(x.getCpf());
 			if (aux != null){
 				throw new ServicoException("CPF já existente!", 1);
 			}
-			/*
-			Cliente c = dao.buscarNomeExato(x.getNome());
-			if (c != null){
-				throw new ServicoException("Já existe um cliente com esse nome!", 1);
-			}*/
-			
 			Transaction.begin();
 			dao.inserirAtualizar(x);
 			Transaction.commit();
