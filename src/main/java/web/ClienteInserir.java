@@ -20,7 +20,7 @@ public class ClienteInserir extends HttpServlet {
 	private static String DESTINO = "/cliente/listar.jsp";
 	private static String ERRO = "/publico/erro.jsp";
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		ClienteServico cl = new ClienteServico();
