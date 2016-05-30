@@ -18,7 +18,7 @@
 
 				<li><a href="<%=request.getContextPath()%>/cliente/listar">Cadastro
 						de Cliente</a></li>
-				<li><a href="<%=request.getContextPath()%>/hoteis/pesquisar">Pesquisar
+				<li><a href="<%=request.getContextPath()%>/hotel/pesquisar">Pesquisar
 						Hotéis</a></li>
 				<li><a href="<%=request.getContextPath()%>/item/hotel">Incluir
 						Item em Pacote</a></li>

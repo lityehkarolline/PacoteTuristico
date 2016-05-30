@@ -47,7 +47,7 @@ public class HotelDaoImpl implements HotelDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Hotel> buscarPorNomeDiaria(String nome, BigDecimal diariaMin, BigDecimal diariaMax) {
-		String jpql = "SELECT x FROM Hotel x WHERE x.nome LIKE :p1 AND x.diaria >= :p2 AND x.diaria <= :p3";
+		String jpql = "SELECT x FROM Hotel x WHERE x.nome LIKE :p1 AND x.diaria >= :p2 AND x.diaria <= :p3 ORDER BY x.diaria";
 		Query query = em.createQuery(jpql);
 		query.setParameter("p1", "%"+nome+"%");
 		query.setParameter("p2", diariaMin);
