@@ -38,7 +38,35 @@
 			<a href="<%=request.getContextPath()%>/hotel/pesquisar"
 				class="btn btn-success">Nova Pesquisa</a>
 		</div>
+		
+		<div class="page-header">
+			<h1>Pacotes do ${item.nome}</h1>
+		</div>
+		
+		<table class="table">
+			<thead>
+			
+				<tr>
+					<th>Nome: </th>
+					<th>Preço Total do Pacote: </th>
+				</tr>
+				
+			</thead>
+			<tbody>
+		
+				<c:forEach items="${item.pacotes}" var="x">
+					<tr>
+						<td>${x.nome}</td>
+						<td>${x.precoTotal}</td>
+					</tr>
+				</c:forEach>
+				
+			</tbody>
+		</table>
+		
 	</div>
+
+		
 
 	<jsp:include page="/resources/templates/rodape.jsp"></jsp:include>
 

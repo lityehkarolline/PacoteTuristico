@@ -23,11 +23,6 @@ public class HotelDetalhes extends HttpServlet {
 		HotelServico h = new HotelServico();
 		int cod = Integer.parseInt(request.getParameter("cod"));
 		Hotel hotel = h.buscar(cod);
-		
-		//PacoteServico h = new PacoteServico();
-		//Hotel hotel = h.buscar(cod);
-		//List<Pacote> item = 
-		
 		request.setAttribute("item", hotel);
 		request.getRequestDispatcher(DESTINO).forward(request, response);
 	}
